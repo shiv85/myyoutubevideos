@@ -1,0 +1,26 @@
+{
+  "channel_name": "Shiv Maurya Vlogs",
+  "channel_url": "https://www.youtube.com/@shivmauryavlogs22",
+  "series_label": "प्राचीन भारत",
+
+  "voice": "hi-IN-MadhurNeural",
+  "voice_rate": "+0%",
+  "voice_pitch": "-3Hz",
+
+  "target_minutes_min": 10.0,
+  "target_minutes_max": 12.0,
+  "chapters": 8,
+  "words_per_chapter": 210,
+  "short_max_seconds": 58,
+
+  "make_long": true,
+  "make_short": true,
+
+  "privacy": "private",
+  "category_id": "27",
+  "synthetic_media_disclosure": true,
+
+  "image_licenses": "free",
+  "music_volume": 0.08,
+  "fps": 25
+}

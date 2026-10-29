@@ -1,0 +1,69 @@
+# One topic per line. The bot uses them top to bottom, then invents new ones by itself.
+# Add, remove or reorder lines any time. Lines starting with # are ignored.
+Mohenjo-daro: the planned city of the Indus Valley Civilisation
+Dholavira: water engineering of a Harappan city in Kutch
+Lothal: the ancient dockyard of the Harappans
+The mystery of the Indus script
+Rakhigarhi: the largest Harappan site and its DNA findings
+The Vedic age: life, society and rivers of the Rigveda
+The sixteen Mahajanapadas of ancient India
+Rise of Magadha: Bimbisara and Ajatashatru
+Gautam Buddha's life and the four great Buddhist sites
+Vardhaman Mahavira and the early Jain tradition
+Alexander's campaign in India and the battle of the Hydaspes with Porus
+Chandragupta Maurya and the founding of the Maurya Empire
+Chanakya and the Arthashastra
+Megasthenes' Indica: Pataliputra through a Greek ambassador's eyes
+Emperor Ashoka and the Kalinga war
+Ashoka's rock edicts and the decipherment of Brahmi by James Prinsep
+The Lion Capital of Ashoka at Sarnath
+Sanchi Stupa and its carved gateways
+Takshashila: one of the world's earliest centres of learning
+Nalanda Mahavihara: rise and destruction of a great university
+The Indo-Greek kings and King Menander (Milinda)
+Kanishka and the Kushan Empire
+Gandhara art: where Greek and Indian styles met
+Mathura school of sculpture
+The Satavahana dynasty of the Deccan
+Kharavela and the Hathigumpha inscription
+The Sangam age of Tamilakam
+Cholas, Cheras and Pandyas in the Sangam period
+Indo-Roman trade and the port of Muziris
+Arikamedu: an ancient Indo-Roman trading post
+Chandragupta I and the rise of the Gupta Empire
+Samudragupta and the Allahabad (Prayagraj) pillar inscription
+Chandragupta II Vikramaditya and the Iron Pillar of Delhi
+Why the Iron Pillar of Delhi does not rust
+Aryabhata and ancient Indian astronomy
+Zero and the decimal system in ancient India
+Sushruta and ancient Indian surgery
+Charaka and the beginnings of Ayurveda
+Kalidasa and Sanskrit literature in the Gupta age
+Ajanta caves: paintings across 800 years
+Ellora caves: Buddhist, Hindu and Jain monuments together
+The Kailasa temple of Ellora: carved from a single rock
+Faxian's journey to Gupta India
+Xuanzang's travels and the India of Harshavardhana
+Harshavardhana and the assembly at Prayag
+The Kumbh tradition in ancient records of Prayag
+The Pallavas and the monuments of Mahabalipuram
+The Chalukyas of Badami and their cave temples
+Aihole: the cradle of Indian temple architecture
+Pattadakal temples: a meeting of northern and southern styles
+The Rashtrakutas: a forgotten superpower of the Deccan
+The Pala Empire and Vikramashila university
+The Pratiharas and their defence of north India
+Raja Raja Chola and the Brihadeeswarar temple of Thanjavur
+Rajendra Chola's naval expedition to Southeast Asia
+Khajuraho temples of the Chandelas
+The Sun Temple of Konark
+Ancient Indian coins: from punch-marked coins to Gupta gold
+Brahmi and Kharosthi: the oldest scripts of historical India
+Ancient Indian trade routes: Uttarapatha and Dakshinapatha
+Ancient Indian metallurgy and wootz steel
+Ancient Indian chess: the story of chaturanga
+Bhimbetka rock shelters: India's prehistoric art
+Mehrgarh: the first farmers of South Asia
+Ancient Kashi (Varanasi): one of the world's oldest living cities
+Kaushambi: the ancient city near Prayagraj
+Shringverpur: archaeology near Prayagraj
