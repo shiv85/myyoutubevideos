@@ -10,6 +10,7 @@ Nothing is ever taken from Google Images, other YouTube videos, films or TV."""
 import hashlib
 import html
 import re
+import time
 from pathlib import Path
 
 import requests
@@ -17,7 +18,30 @@ from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from .common import FONT_BOLD, env, log
 
-UA = {"User-Agent": "AncientIndiaHistoryBot/1.0 (educational YouTube channel; python-requests)"}
+# Wikimedia asks bots to identify themselves with a contact URL, and throttles anonymous-looking ones.
+UA = {"User-Agent": "AncientIndiaHistoryBot/1.1 (https://www.youtube.com/@shivmauryavlogs22; educational) "
+                    "python-requests", "Api-User-Agent": "AncientIndiaHistoryBot/1.1"}
+THUMB_WIDTH = 1920      # a standard Wikimedia thumbnail size (odd sizes are heavily rate-limited)
+MIN_GAP = 1.5           # seconds between Wikimedia downloads
+_last_get = [0.0]
+
+
+def polite_get(url, **kw):
+    """GET with a pause between requests and patient retries on 429 / 5xx (honours Retry-After)."""
+    for attempt in range(6):
+        wait = _last_get[0] + MIN_GAP - time.time()
+        if wait > 0:
+            time.sleep(wait)
+        _last_get[0] = time.time()
+        r = requests.get(url, headers=UA, timeout=60, **kw)
+        if r.status_code not in (429, 500, 502, 503, 504):
+            return r
+        ra = r.headers.get("Retry-After", "")
+        delay = int(ra) if ra.isdigit() else 10 * (2 ** attempt)
+        delay = min(delay, 120)
+        log(f"Wikimedia busy ({r.status_code}), waiting {delay}s")
+        time.sleep(delay)
+    return r
 COMMONS = "https://commons.wikimedia.org/w/api.php"
 
 FREE_RE = re.compile(r"^(public domain|pd\b|pd-|cc0|cc[ -]?zero|cc by(-sa)?[ -]?\d|cc-by(-sa)?-\d|no restrictions)",
@@ -47,11 +71,11 @@ class ImageFinder:
         params = {
             "action": "query", "format": "json", "generator": "search",
             "gsrsearch": f"{query} filetype:bitmap", "gsrnamespace": 6, "gsrlimit": 20,
-            "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata", "iiurlwidth": 2400,
+            "prop": "imageinfo", "iiprop": "url|size|mime|extmetadata", "iiurlwidth": THUMB_WIDTH,
         }
         out = []
         try:
-            pages = requests.get(COMMONS, params=params, headers=UA, timeout=30).json() \
+            pages = polite_get(COMMONS, params=params).json() \
                 .get("query", {}).get("pages", {})
         except Exception as e:
             log(f"commons search failed for '{query}': {e}")
@@ -73,7 +97,7 @@ class ImageFinder:
             artist = re.sub(r"\s+", " ", artist)[:60]
             name = title.replace("File:", "").rsplit(".", 1)[0][:60]
             out.append({
-                "url": info.get("thumburl") or info["url"],
+                "url": info["url"] if info.get("width", 0) <= THUMB_WIDTH else (info.get("thumburl") or info["url"]),
                 "credit": f"{name} — {artist}, {lic}, via Wikimedia Commons ({info.get('descriptionshorturl') or info.get('descriptionurl')})",
                 "needs_credit": not PD_RE.search(lic),
             })
@@ -98,7 +122,7 @@ class ImageFinder:
         name = hashlib.md5(cand["url"].encode()).hexdigest()[:16] + ".jpg"
         path = self.dir / name
         if not path.exists():
-            r = requests.get(cand["url"], headers=UA, timeout=60)
+            r = polite_get(cand["url"])
             r.raise_for_status()
             path.write_bytes(r.content)
             Image.open(path).convert("RGB").save(path, "JPEG", quality=92)  # validate + normalise
