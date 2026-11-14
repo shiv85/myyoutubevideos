@@ -30,7 +30,6 @@ def _claude(system, prompt, max_tokens):
 
 
 GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
-_gemini_model = None  # remembered after the first model that works
 
 
 def _gemini_candidates():
@@ -56,46 +55,71 @@ def _gemini_candidates():
     return seen
 
 
-def _gemini_call(model, system, prompt, max_tokens):
-    r = requests.post(
+def _gemini_call(model, system, prompt, max_tokens, low_thinking=True):
+    gen = {"maxOutputTokens": max(max_tokens * 3, 16000), "temperature": 0.8,
+           "responseMimeType": "application/json"}
+    if low_thinking:  # less "thinking" = faster answers and fewer timeouts
+        gen["thinkingConfig"] = {"thinkingLevel": "low"}
+    return requests.post(
         f"{GEMINI_BASE}/models/{model}:generateContent",
         params={"key": env("GEMINI_API_KEY")},
         json={
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            # newer models "think" before answering and that uses output tokens, so allow plenty
-            "generationConfig": {"maxOutputTokens": max(max_tokens * 3, 16000), "temperature": 0.8,
-                                 "responseMimeType": "application/json"},
+            "generationConfig": gen,
         },
-        timeout=600,
+        timeout=240,
     )
-    return r
+
+
+_gemini_models = None      # usable models, best first
+_no_low_thinking = set()   # models that reject the thinkingLevel setting
+_gemini_round = 0
 
 
 def _gemini(system, prompt, max_tokens):
-    global _gemini_model
-    models = [_gemini_model] if _gemini_model else _gemini_candidates()
-    last = None
-    for model in models:
-        r = _gemini_call(model, system, prompt, max_tokens)
-        if r.status_code in (400, 404) and not _gemini_model and "API key" not in r.text:
-            log(f"Gemini model '{model}' not available ({r.status_code}), trying next")
-            last = r
+    """Tries each usable model in turn. Busy (429/500/503) or slow models are skipped
+    for this attempt instead of waiting on them."""
+    global _gemini_models, _gemini_round
+    if _gemini_models is None:
+        _gemini_models = _gemini_candidates()
+    # start each new attempt from a different model, so one overloaded model can't block everything
+    order = _gemini_models[_gemini_round % len(_gemini_models):] + _gemini_models[:_gemini_round % len(_gemini_models)]
+    _gemini_round += 1
+    problems = []
+    for model in list(order):
+        try:
+            r = _gemini_call(model, system, prompt, max_tokens, model not in _no_low_thinking)
+            if r.status_code == 400 and "thinking" in r.text.lower():
+                _no_low_thinking.add(model)
+                r = _gemini_call(model, system, prompt, max_tokens, False)
+        except requests.exceptions.RequestException as e:
+            log(f"Gemini '{model}' too slow / connection problem, trying next model")
+            problems.append(f"{model}: {type(e).__name__}")
             continue
         if r.status_code in (400, 403) and "API key" in r.text:
             raise RuntimeError("Gemini rejected the API key - check the GEMINI_API_KEY secret: " + r.text[:300])
+        if r.status_code in (400, 404):
+            log(f"Gemini model '{model}' not available ({r.status_code}), removing it")
+            if model in _gemini_models and len(_gemini_models) > 1:
+                _gemini_models.remove(model)
+            problems.append(f"{model}: {r.status_code}")
+            continue
+        if r.status_code in (429, 500, 502, 503, 504):
+            log(f"Gemini '{model}' busy ({r.status_code}), trying next model")
+            problems.append(f"{model}: {r.status_code}")
+            continue
         r.raise_for_status()
-        if _gemini_model != model:
-            log(f"using Gemini model: {model}")
-        _gemini_model = model
-        cand = r.json()["candidates"][0]
+        cand = (r.json().get("candidates") or [{}])[0]
         parts = cand.get("content", {}).get("parts", [])
         text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
         if not text:
-            raise RuntimeError(f"Gemini returned no text (finishReason={cand.get('finishReason')})")
+            log(f"Gemini '{model}' returned no text (finishReason={cand.get('finishReason')}), trying next")
+            problems.append(f"{model}: empty")
+            continue
+        log(f"Gemini answered with model: {model}")
         return text
-    raise RuntimeError(f"No usable Gemini model found. Last reply: {last.status_code if last else ''} "
-                       f"{last.text[:300] if last else ''}")
+    raise RuntimeError("all Gemini models failed this round: " + "; ".join(problems)[:500])
 
 
 def ask(system, prompt, max_tokens=8000):
@@ -115,7 +139,7 @@ def _extract_json(text):
     return json.loads(text[start:end + 1])
 
 
-def ask_json(system, prompt, max_tokens=8000, tries=4):
+def ask_json(system, prompt, max_tokens=8000, tries=6):
     last = None
     for i in range(tries):
         try:
@@ -124,5 +148,5 @@ def ask_json(system, prompt, max_tokens=8000, tries=4):
         except Exception as e:  # network blips, rate limits, broken JSON
             last = e
             log(f"LLM attempt {i + 1} failed: {e}")
-            time.sleep(10 * (i + 1))
+            time.sleep(min(120, 20 * (i + 1)))  # 20s, 40s, 60s ... gives busy servers time to recover
     raise RuntimeError(f"LLM failed after {tries} tries: {last}")
