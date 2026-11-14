@@ -29,22 +29,73 @@ def _claude(system, prompt, max_tokens):
     return "".join(b.get("text", "") for b in r.json()["content"])
 
 
-def _gemini(system, prompt, max_tokens):
-    model = env("GEMINI_MODEL", "gemini-2.5-flash")
+GEMINI_BASE = "https://generativelanguage.googleapis.com/v1beta"
+_gemini_model = None  # remembered after the first model that works
+
+
+def _gemini_candidates():
+    """Preferred model first, then Google's auto-updating alias, then whatever Flash models
+    this key can actually use (so a retired model name never breaks the bot again)."""
+    names = [env("GEMINI_MODEL"), "gemini-flash-latest"]
+    try:
+        r = requests.get(f"{GEMINI_BASE}/models", params={"key": env("GEMINI_API_KEY"), "pageSize": 200},
+                         timeout=60)
+        found = [m["name"].split("/", 1)[1] for m in r.json().get("models", [])
+                 if "generateContent" in m.get("supportedGenerationMethods", [])]
+        bad = ("tts", "image", "live", "lite", "audio", "embedding", "transcribe", "robotics", "computer")
+        flash = [n for n in found if "flash" in n and not any(b in n for b in bad)]
+        flash.sort(key=lambda n: ("preview" in n or "exp" in n,
+                                  [-int(x) for x in re.findall(r"\d+", n)]))
+        names += flash + [n for n in found if "pro" in n and not any(b in n for b in bad)]
+    except Exception as e:
+        log(f"could not list Gemini models: {e}")
+    seen = []
+    for n in names:
+        if n and n not in seen:
+            seen.append(n)
+    return seen
+
+
+def _gemini_call(model, system, prompt, max_tokens):
     r = requests.post(
-        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
+        f"{GEMINI_BASE}/models/{model}:generateContent",
         params={"key": env("GEMINI_API_KEY")},
         json={
             "systemInstruction": {"parts": [{"text": system}]},
             "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-            "generationConfig": {"maxOutputTokens": max_tokens, "temperature": 0.8,
+            # newer models "think" before answering and that uses output tokens, so allow plenty
+            "generationConfig": {"maxOutputTokens": max(max_tokens * 3, 16000), "temperature": 0.8,
                                  "responseMimeType": "application/json"},
         },
-        timeout=300,
+        timeout=600,
     )
-    r.raise_for_status()
-    parts = r.json()["candidates"][0]["content"]["parts"]
-    return "".join(p.get("text", "") for p in parts)
+    return r
+
+
+def _gemini(system, prompt, max_tokens):
+    global _gemini_model
+    models = [_gemini_model] if _gemini_model else _gemini_candidates()
+    last = None
+    for model in models:
+        r = _gemini_call(model, system, prompt, max_tokens)
+        if r.status_code in (400, 404) and not _gemini_model and "API key" not in r.text:
+            log(f"Gemini model '{model}' not available ({r.status_code}), trying next")
+            last = r
+            continue
+        if r.status_code in (400, 403) and "API key" in r.text:
+            raise RuntimeError("Gemini rejected the API key - check the GEMINI_API_KEY secret: " + r.text[:300])
+        r.raise_for_status()
+        if _gemini_model != model:
+            log(f"using Gemini model: {model}")
+        _gemini_model = model
+        cand = r.json()["candidates"][0]
+        parts = cand.get("content", {}).get("parts", [])
+        text = "".join(p.get("text", "") for p in parts if not p.get("thought"))
+        if not text:
+            raise RuntimeError(f"Gemini returned no text (finishReason={cand.get('finishReason')})")
+        return text
+    raise RuntimeError(f"No usable Gemini model found. Last reply: {last.status_code if last else ''} "
+                       f"{last.text[:300] if last else ''}")
 
 
 def ask(system, prompt, max_tokens=8000):
