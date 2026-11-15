@@ -1,11 +1,13 @@
 {
   "topics": [
     "Mohenjo-daro: the planned city of the Indus Valley Civilisation",
-    "Dholavira: water engineering of a Harappan city in Kutch"
+    "Dholavira: water engineering of a Harappan city in Kutch",
+    "Lothal: the ancient dockyard of the Harappans"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
-    "धोलावीरा: कच्छ के रेगिस्तान में सिंधु घाटी सभ्यता का जल प्रबंधन"
+    "धोलावीरा: कच्छ के रेगिस्तान में सिंधु घाटी सभ्यता का जल प्रबंधन",
+    "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार"
   ],
   "videos": [
     {
@@ -22,6 +24,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 11.9,
       "title": "धोलावीरा: कच्छ के रेगिस्तान में सिंधु घाटी सभ्यता का जल प्रबंधन",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "Lothal: the ancient dockyard of the Harappans",
+      "date": "2026-11-15",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.61,
+      "title": "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
