@@ -2,12 +2,14 @@
   "topics": [
     "Mohenjo-daro: the planned city of the Indus Valley Civilisation",
     "Dholavira: water engineering of a Harappan city in Kutch",
-    "Lothal: the ancient dockyard of the Harappans"
+    "Lothal: the ancient dockyard of the Harappans",
+    "The mystery of the Indus script"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
     "धोलावीरा: कच्छ के रेगिस्तान में सिंधु घाटी सभ्यता का जल प्रबंधन",
-    "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार"
+    "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार",
+    "सिंधु लिपि का रहस्य: प्राचीन भारत की अनदेखी भाषा की खोज"
   ],
   "videos": [
     {
@@ -32,6 +34,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 12.61,
       "title": "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "The mystery of the Indus script",
+      "date": "2026-11-16",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.05,
+      "title": "सिंधु लिपि का रहस्य: प्राचीन भारत की अनदेखी भाषा की खोज",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
