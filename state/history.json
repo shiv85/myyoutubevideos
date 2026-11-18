@@ -4,14 +4,16 @@
     "Dholavira: water engineering of a Harappan city in Kutch",
     "Lothal: the ancient dockyard of the Harappans",
     "The mystery of the Indus script",
-    "Rakhigarhi: the largest Harappan site and its DNA findings"
+    "Rakhigarhi: the largest Harappan site and its DNA findings",
+    "The Vedic age: life, society and rivers of the Rigveda"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
     "धोलावीरा: कच्छ के रेगिस्तान में सिंधु घाटी सभ्यता का जल प्रबंधन",
     "लोथल: सिंधु घाटी सभ्यता का 4500 साल पुराना बंदरगाह और समुद्री व्यापार",
     "सिंधु लिपि का रहस्य: प्राचीन भारत की अनदेखी भाषा की खोज",
-    "राखीगढ़ी: सिंधु घाटी सभ्यता का सबसे बड़ा नगर और प्राचीन डीएनए का रहस्य"
+    "राखीगढ़ी: सिंधु घाटी सभ्यता का सबसे बड़ा नगर और प्राचीन डीएनए का रहस्य",
+    "ऋग्वेद काल का भारत: सप्त सैंधव की नदियां, समाज और कबीलाई जीवन"
   ],
   "videos": [
     {
@@ -52,6 +54,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 12.22,
       "title": "राखीगढ़ी: सिंधु घाटी सभ्यता का सबसे बड़ा नगर और प्राचीन डीएनए का रहस्य",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "The Vedic age: life, society and rivers of the Rigveda",
+      "date": "2026-11-18",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 11.25,
+      "title": "ऋग्वेद काल का भारत: सप्त सैंधव की नदियां, समाज और कबीलाई जीवन",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
