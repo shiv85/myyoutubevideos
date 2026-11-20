@@ -6,7 +6,8 @@
     "The mystery of the Indus script",
     "Rakhigarhi: the largest Harappan site and its DNA findings",
     "The Vedic age: life, society and rivers of the Rigveda",
-    "The sixteen Mahajanapadas of ancient India"
+    "The sixteen Mahajanapadas of ancient India",
+    "Rise of Magadha: Bimbisara and Ajatashatru"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
@@ -15,7 +16,8 @@
     "सिंधु लिपि का रहस्य: प्राचीन भारत की अनदेखी भाषा की खोज",
     "राखीगढ़ी: सिंधु घाटी सभ्यता का सबसे बड़ा नगर और प्राचीन डीएनए का रहस्य",
     "ऋग्वेद काल का भारत: सप्त सैंधव की नदियां, समाज और कबीलाई जीवन",
-    "16 महाजनपद: जब कबीलों से बने भारत के पहले 16 शक्तिशाली राज्य"
+    "16 महाजनपद: जब कबीलों से बने भारत के पहले 16 शक्तिशाली राज्य",
+    "मगध का उत्कर्ष: बिंबिसार और अजातशत्रु के पहले साम्राज्य की गाथा"
   ],
   "videos": [
     {
@@ -72,6 +74,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 12.13,
       "title": "16 महाजनपद: जब कबीलों से बने भारत के पहले 16 शक्तिशाली राज्य",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "Rise of Magadha: Bimbisara and Ajatashatru",
+      "date": "2026-11-20",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.08,
+      "title": "मगध का उत्कर्ष: बिंबिसार और अजातशत्रु के पहले साम्राज्य की गाथा",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
