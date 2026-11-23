@@ -9,7 +9,8 @@
     "The sixteen Mahajanapadas of ancient India",
     "Rise of Magadha: Bimbisara and Ajatashatru",
     "Gautam Buddha's life and the four great Buddhist sites",
-    "Vardhaman Mahavira and the early Jain tradition"
+    "Vardhaman Mahavira and the early Jain tradition",
+    "Alexander's campaign in India and the battle of the Hydaspes with Porus"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
@@ -21,7 +22,8 @@
     "16 महाजनपद: जब कबीलों से बने भारत के पहले 16 शक्तिशाली राज्य",
     "मगध का उत्कर्ष: बिंबिसार और अजातशत्रु के पहले साम्राज्य की गाथा",
     "महात्मा बुद्ध का जीवन और बौद्ध धर्म के चार पवित्र तीर्थ",
-    "वर्धमान महावीर: 24वें तीर्थंकर और जैन धर्म के दर्शन का इतिहास"
+    "वर्धमान महावीर: 24वें तीर्थंकर और जैन धर्म के दर्शन का इतिहास",
+    "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच"
   ],
   "videos": [
     {
@@ -102,6 +104,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 11.54,
       "title": "वर्धमान महावीर: 24वें तीर्थंकर और जैन धर्म के दर्शन का इतिहास",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "Alexander's campaign in India and the battle of the Hydaspes with Porus",
+      "date": "2026-11-23",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.07,
+      "title": "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
