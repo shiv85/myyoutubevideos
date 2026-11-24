@@ -10,7 +10,8 @@
     "Rise of Magadha: Bimbisara and Ajatashatru",
     "Gautam Buddha's life and the four great Buddhist sites",
     "Vardhaman Mahavira and the early Jain tradition",
-    "Alexander's campaign in India and the battle of the Hydaspes with Porus"
+    "Alexander's campaign in India and the battle of the Hydaspes with Porus",
+    "Chandragupta Maurya and the founding of the Maurya Empire"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
@@ -23,7 +24,8 @@
     "मगध का उत्कर्ष: बिंबिसार और अजातशत्रु के पहले साम्राज्य की गाथा",
     "महात्मा बुद्ध का जीवन और बौद्ध धर्म के चार पवित्र तीर्थ",
     "वर्धमान महावीर: 24वें तीर्थंकर और जैन धर्म के दर्शन का इतिहास",
-    "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच"
+    "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच",
+    "चंद्रगुप्त मौर्य: चाणक्य की नीति और मौर्य साम्राज्य की स्थापना का इतिहास"
   ],
   "videos": [
     {
@@ -112,6 +114,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 12.07,
       "title": "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "Chandragupta Maurya and the founding of the Maurya Empire",
+      "date": "2026-11-24",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.4,
+      "title": "चंद्रगुप्त मौर्य: चाणक्य की नीति और मौर्य साम्राज्य की स्थापना का इतिहास",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
