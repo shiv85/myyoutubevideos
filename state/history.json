@@ -12,7 +12,8 @@
     "Vardhaman Mahavira and the early Jain tradition",
     "Alexander's campaign in India and the battle of the Hydaspes with Porus",
     "Chandragupta Maurya and the founding of the Maurya Empire",
-    "Chanakya and the Arthashastra"
+    "Chanakya and the Arthashastra",
+    "Megasthenes' Indica: Pataliputra through a Greek ambassador's eyes"
   ],
   "titles": [
     "मोहनजोदड़ो: सिंधु घाटी की 4500 साल पुरानी अद्भुत नगर योजना",
@@ -27,7 +28,8 @@
     "वर्धमान महावीर: 24वें तीर्थंकर और जैन धर्म के दर्शन का इतिहास",
     "सिकंदर और राजा पोरस: झेलम का युद्ध और भारत अभियान का सच",
     "चंद्रगुप्त मौर्य: चाणक्य की नीति और मौर्य साम्राज्य की स्थापना का इतिहास",
-    "चाणक्य और अर्थशास्त्र: प्राचीन भारत की राजनीति और अर्थशास्त्र का महान ग्रंथ"
+    "चाणक्य और अर्थशास्त्र: प्राचीन भारत की राजनीति और अर्थशास्त्र का महान ग्रंथ",
+    "मेगस्थनीज की इंडिका: यूनानी राजदूत की नजर से पाटलिपुत्र और मौर्य साम्राज्य"
   ],
   "videos": [
     {
@@ -132,6 +134,14 @@
       "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
       "long_minutes": 12.37,
       "title": "चाणक्य और अर्थशास्त्र: प्राचीन भारत की राजनीति और अर्थशास्त्र का महान ग्रंथ",
+      "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
+    },
+    {
+      "topic": "Megasthenes' Indica: Pataliputra through a Greek ambassador's eyes",
+      "date": "2026-11-28",
+      "long_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/long.mp4",
+      "long_minutes": 12.05,
+      "title": "मेगस्थनीज की इंडिका: यूनानी राजदूत की नजर से पाटलिपुत्र और मौर्य साम्राज्य",
       "short_video": "/home/runner/work/myyoutubevideos/myyoutubevideos/output/short.mp4"
     }
   ]
